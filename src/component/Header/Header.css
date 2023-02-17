@@ -1,0 +1,10 @@
+.dwnp{
+    margin-left: 20px;
+}
+@media screen and (max-width: 400px) {
+    .dwnp {
+        margin-left: -3px;
+        width: 86px;
+        padding-left: 8px;
+    }
+}

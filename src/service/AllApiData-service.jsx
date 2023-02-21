@@ -104,6 +104,191 @@ export const getCountryList = async (datas) => {
   }
   };
 
+
+
+
+//   state here
+
+export const saveState = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/state/create`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  export const updateState = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/state/update`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+export const getStateList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/state/list`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+  export const getShowStateList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/state/detail`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+// end here
+
+
+
+
+//   city here
+
+export const saveCity = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/city/create`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  export const updateCity = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/city/update`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+export const getCityList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/city/list`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  
+  export const getShowCityList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/city/detail`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+// end here
+
+
+//   Company here
+
+export const saveCompany = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/company/create`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  export const updateCompany = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/company/update`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+export const getCompanyList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/company/list`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  
+  export const getShowCompanyList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/company/detail`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+// end here
+
 // static getAllAgentList() {
 // 	return http.get("agent/", { headers: AppService.authHeader() });
 // };

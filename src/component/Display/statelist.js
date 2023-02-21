@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getCountryList, getShowCountryList, saveCountry,
-    updateCountry } from "../../service/AllApiData-service";
+import { getStateList, getShowStateList, saveState,
+    updateState, getCountryList } from "../../service/AllApiData-service";
 
-const  CountryStateCity = () => {
+const  State = () => {
+    const [getCountryID, setGetCountryID] = useState([]);
     const [getCountry, setGetCountry] = useState([]);
-    const [country_name, setCountry_name] = useState("");
+    const [state_name, setState_name] = useState("");
+    const [country_id, setCountry_id] = useState("");
+    
     const [status, setStatus] = useState("");
     const [XID, setXID] = useState("");
     const [hide, setHide] = useState(true);
@@ -25,10 +28,26 @@ const  CountryStateCity = () => {
    const displayedItems = getCountry.slice(startIndex, startIndex + itemsPerPage);
 
 
+   const getAllCountryID = async () => {
+    const data = { page:1, limit:'25', search:'' };
+     await getCountryList(data).then(res => {
+    //console.log("ddd", res);
+    setGetCountryID(res.data.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+
+
+  };
+
+
+
 
     const getAllCountry = async () => {
         const data = { page:page, limit:'25', search:'' };
-         await getCountryList(data).then(res => {
+         await getStateList(data).then(res => {
         //console.log("ddd", res);
         setGetCountry(res.data.data);
           })
@@ -41,8 +60,8 @@ const  CountryStateCity = () => {
       };
 
       const save = async () => {
-        const data = {country_name,status};
-         await saveCountry(data).then(res => {
+        const data = {state_name,country_id,status};
+         await saveState(data).then(res => {
         if(res.data.status===1){
             alert("Save Successfully");
             getAllCountry();
@@ -60,9 +79,10 @@ const  CountryStateCity = () => {
 
       const showAllCountry = async (ID) => {
         console.log(ID);
-         await getShowCountryList(ID).then(res => {
+         await getShowStateList(ID).then(res => {
     //    console.log("ddd", res.data);
-        setCountry_name(res.data.country_name);
+        setState_name(res.data.state_name);
+        setCountry_id(res.data.country_id);
         setStatus(res.data.status);
         setXID(res.data.id);
         setHide(false);
@@ -79,11 +99,12 @@ const  CountryStateCity = () => {
 
 
       const update = async (ID) => {
-        const data = {"id":XID,country_name,status}
-         await updateCountry(data).then(res => {
+        const data = {"id":XID,state_name,country_id,status}
+         await updateState(data).then(res => {
     //    console.log("ddd", res.data);
        if(res.data.success===true){
         alert(res.data.message);
+        getAllCountry();
        }
         setHide(false);
           })
@@ -99,6 +120,7 @@ const  CountryStateCity = () => {
 
     useEffect(() => {
         getAllCountry();
+        getAllCountryID();
       }, []);
 
 
@@ -112,17 +134,28 @@ const  CountryStateCity = () => {
                         <div className="col-xl-6 col-lg-6 col-md-6 d-flex flex-column mx-auto">
 <div className="card">
 <div className="card-header pb-0 text-start">
-<h3 className="font-weight-bolder text-info text-gradient text-center display-7">Create Country</h3>
+<h3 className="font-weight-bolder text-info text-gradient text-center display-7">Create State</h3>
 
 
 </div>
 <div className="card-body pt-0">
 <form role="form" className="text-start">
+<label>State</label>
+<div className="mb-3">
+<input  onChange={e => setState_name(e.target.value)} name="state_name" 
+value={state_name} type="text" className="form-control" />
+</div>
+
 <label>Country</label>
 <div className="mb-3">
-<input  onChange={e => setCountry_name(e.target.value)} name="country_name" 
-value={country_name} type="text" className="form-control" />
+<select onChange={e => setCountry_id(e.target.value)} name="country_id" 
+value={country_id} className="form-control">
+     {getCountryID.map((item, index)=>(
+    <option value={item.id}>{item.country_name}</option>
+     ))}
+    </select>
 </div>
+
 <label>Enable</label>
 <div className="mb-3">
 <select onChange={e => setStatus(e.target.value)} name="status" 
@@ -170,6 +203,7 @@ value={status} className="form-control">
                                         <tr>
                                             <th>S.No</th>
                                             <th>Country</th>
+                                            <th>State</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                            
@@ -182,7 +216,10 @@ value={status} className="form-control">
                                                     {index + 1}
                                                 </td>
                                                 <td>
-                                                    {item.country_name}
+                                                    {item.country.data.country_name}
+                                                </td>
+                                                <td>
+                                                    {item.state_name}
                                                 </td>
                                                 <td>
                                                 {item.status===1?'Enable':'Disable'}
@@ -240,4 +277,4 @@ value={status} className="form-control">
     )
 }
 
-export default CountryStateCity
+export default State

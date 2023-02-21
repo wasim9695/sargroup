@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getCountryList, getShowCountryList, saveCountry,
-    updateCountry } from "../../service/AllApiData-service";
+import {getStateList, getCityList, getShowCityList, saveCity,
+    updateCity } from "../../service/AllApiData-service";
 
-const  CountryStateCity = () => {
-    const [getCountry, setGetCountry] = useState([]);
-    const [country_name, setCountry_name] = useState("");
+const  City = () => {
+    const [getState, setGetState] = useState([]);
+    const [getCity, setGetCity] = useState([]);
+    const [city_name, setCity_name] = useState("");
+    const [state_id, setState_id] = useState("");
     const [status, setStatus] = useState("");
     const [XID, setXID] = useState("");
     const [hide, setHide] = useState(true);
@@ -22,15 +24,15 @@ const  CountryStateCity = () => {
    }
 
    const startIndex = (page - 1) * itemsPerPage;
-   const displayedItems = getCountry.slice(startIndex, startIndex + itemsPerPage);
+   const displayedItems = getCity.slice(startIndex, startIndex + itemsPerPage);
 
 
 
-    const getAllCountry = async () => {
+    const getAllCity = async () => {
         const data = { page:page, limit:'25', search:'' };
-         await getCountryList(data).then(res => {
+         await getCityList(data).then(res => {
         //console.log("ddd", res);
-        setGetCountry(res.data.data);
+        setGetCity(res.data.data);
           })
           .catch(err => {
             console.log(err);
@@ -40,12 +42,28 @@ const  CountryStateCity = () => {
 
       };
 
+
+      const getAllState = async () => {
+        const data = { page:page, limit:'25', search:'' };
+         await getStateList(data).then(res => {
+        //console.log("ddd", res);
+        setGetState(res.data.data);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+
+
+
+      };
+
+
       const save = async () => {
-        const data = {country_name,status};
-         await saveCountry(data).then(res => {
+        const data = {city_name,state_id,status};
+         await saveCity(data).then(res => {
         if(res.data.status===1){
             alert("Save Successfully");
-            getAllCountry();
+            getAllCity();
         }
           })
           .catch(err => {
@@ -58,11 +76,12 @@ const  CountryStateCity = () => {
 
 
 
-      const showAllCountry = async (ID) => {
+      const showAllCity = async (ID) => {
         console.log(ID);
-         await getShowCountryList(ID).then(res => {
+         await getShowCityList(ID).then(res => {
     //    console.log("ddd", res.data);
-        setCountry_name(res.data.country_name);
+    setCity_name(res.data.city_name);
+    setState_id(res.data.state_id);
         setStatus(res.data.status);
         setXID(res.data.id);
         setHide(false);
@@ -79,11 +98,12 @@ const  CountryStateCity = () => {
 
 
       const update = async (ID) => {
-        const data = {"id":XID,country_name,status}
-         await updateCountry(data).then(res => {
+        const data = {"id":XID,city_name,state_id,status}
+         await updateCity(data).then(res => {
     //    console.log("ddd", res.data);
        if(res.data.success===true){
         alert(res.data.message);
+        getAllCity();
        }
         setHide(false);
           })
@@ -98,7 +118,8 @@ const  CountryStateCity = () => {
 
 
     useEffect(() => {
-        getAllCountry();
+        getAllCity();
+        getAllState();
       }, []);
 
 
@@ -112,17 +133,28 @@ const  CountryStateCity = () => {
                         <div className="col-xl-6 col-lg-6 col-md-6 d-flex flex-column mx-auto">
 <div className="card">
 <div className="card-header pb-0 text-start">
-<h3 className="font-weight-bolder text-info text-gradient text-center display-7">Create Country</h3>
+<h3 className="font-weight-bolder text-info text-gradient text-center display-7">Create City</h3>
 
 
 </div>
 <div className="card-body pt-0">
 <form role="form" className="text-start">
-<label>Country</label>
+<label>City</label>
 <div className="mb-3">
-<input  onChange={e => setCountry_name(e.target.value)} name="country_name" 
-value={country_name} type="text" className="form-control" />
+<input  onChange={e => setCity_name(e.target.value)} name="city_name" 
+value={city_name} type="text" className="form-control" />
 </div>
+
+<label>State</label>
+<div className="mb-3">
+<select onChange={e => setState_id(e.target.value)} name="state_id" 
+value={state_id} className="form-control">
+     {getState.map((item, index)=>(
+    <option value={item.id}>{item.state_name}</option>
+     ))}
+    </select>
+</div>
+
 <label>Enable</label>
 <div className="mb-3">
 <select onChange={e => setStatus(e.target.value)} name="status" 
@@ -170,6 +202,8 @@ value={status} className="form-control">
                                         <tr>
                                             <th>S.No</th>
                                             <th>Country</th>
+                                            <th>State</th>
+                                            <th>City</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                            
@@ -182,7 +216,13 @@ value={status} className="form-control">
                                                     {index + 1}
                                                 </td>
                                                 <td>
-                                                    {item.country_name}
+                                                    {item.state.data.country.data.country_name}
+                                                </td>
+                                                <td>
+                                                    {item.state.data.state_name}
+                                                </td>
+                                                <td>
+                                                    {item.city_name}
                                                 </td>
                                                 <td>
                                                 {item.status===1?'Enable':'Disable'}
@@ -192,7 +232,7 @@ value={status} className="form-control">
                       <i class="fa fa-ellipsis-v text-xs"></i>
                     </button>
                     <ul class="dropdown-menu px-2 py-3" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item border-radius-md" onClick={() => showAllCountry(item)}
+              <li><a class="dropdown-item border-radius-md" onClick={() => showAllCity(item)}
  href="javascript:void(0)">Edit</a></li>
               <li><a class="dropdown-item border-radius-md" href="javascript:;">Delete</a></li>
               
@@ -221,7 +261,7 @@ value={status} className="form-control">
                                             
                                            
                                             <li className="page-item">
-                                                <a onClick={handleNextClick} disabled={page === Math.ceil(getCountry.length / itemsPerPage)}  className={"page-link"+" "+ (page === Math.ceil(getCountry.length / itemsPerPage) ? "badge-primarys " : "badge-dangers ")} href="javascript:;" aria-label="Next">
+                                                <a onClick={handleNextClick} disabled={page === Math.ceil(getCity.length / itemsPerPage)}  className={"page-link"+" "+ (page === Math.ceil(getCity.length / itemsPerPage) ? "badge-primarys " : "badge-dangers ")} href="javascript:;" aria-label="Next">
                                                     <i className="fa fa-angle-right"></i>
                                                     <span className="sr-only">Next</span>
                                                 </a>
@@ -240,4 +280,4 @@ value={status} className="form-control">
     )
 }
 
-export default CountryStateCity
+export default City

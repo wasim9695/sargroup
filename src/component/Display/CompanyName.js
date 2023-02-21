@@ -1,6 +1,146 @@
 import React from 'react'
+import { getCountryList, getStateList, getCityList, getShowCompanyList, saveCompany,
+    updateCompany, getCompanyList } from "../../service/AllApiData-service";
 
 const  CompanyName = () => {
+    const [getcountry, setGetCountry] = useState([]);
+    const [getState, setGetState] = useState([]);
+    const [getCity, setGetCity] = useState([]);
+    const [name, setName] = useState("");
+    const [type, setType] = useState("");
+    const [address_line1, setAddress_line1] = useState("");
+    const [address_line2, setAddress_line2] = useState("");
+    const [street, setStreet] = useState("");
+    const [pincode, setPincode] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [country, setCountry] = useState("");
+    const [contact_1, setContact_1] = useState("");
+    const [contact_2, setContact_2] = useState("");
+    const [contact_3, setContact_3] = useState("");
+    const [fax_no, setFax_no] = useState("");
+    const [email, setEmail] = useState("");
+    const [trade_license_no, setTrade_license_no] = useState("");
+    const [PAN_no, setPAN_no] = useState("");
+    const [VAT_no, setVAT_no] = useState("");
+    const [CST_no, setCST_no] = useState("");
+    const [WBST_no, setWBST_no] = useState("");
+    const [Gold_license_no, setGold_license_no] = useState("");
+    const [status, setStatus] = useState("");
+    const [XID, setXID] = useState("");
+    const [hide, setHide] = useState(true);
+    const [page, setPage] = useState(1);
+
+    const itemsPerPage = 5;
+    const handlePrevClick = () => {
+     setPage(page - 1);
+     
+   }
+ 
+   const handleNextClick = async () => {
+     setPage(page + 1);
+   }
+
+   const startIndex = (page - 1) * itemsPerPage;
+   const displayedItems = getCity.slice(startIndex, startIndex + itemsPerPage);
+
+
+
+    const getAllCity = async () => {
+        const data = { page:page, limit:'25', search:'' };
+         await getCityList(data).then(res => {
+        //console.log("ddd", res);
+        setGetCity(res.data.data);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+
+
+
+      };
+
+
+      const getAllState = async () => {
+        const data = { page:page, limit:'25', search:'' };
+         await getStateList(data).then(res => {
+        //console.log("ddd", res);
+        setGetState(res.data.data);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+
+
+
+      };
+
+
+      const save = async () => {
+        const data = {city_name,state_id,status};
+         await saveCity(data).then(res => {
+        if(res.data.status===1){
+            alert("Save Successfully");
+            getAllCity();
+        }
+          })
+          .catch(err => {
+            console.log(err);
+          })
+
+
+
+      };
+
+
+
+      const showAllCity = async (ID) => {
+        console.log(ID);
+         await getShowCityList(ID).then(res => {
+    //    console.log("ddd", res.data);
+    setCity_name(res.data.city_name);
+    setState_id(res.data.state_id);
+        setStatus(res.data.status);
+        setXID(res.data.id);
+        setHide(false);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+
+
+
+      };
+
+
+
+
+      const update = async (ID) => {
+        const data = {"id":XID,city_name,state_id,status}
+         await updateCity(data).then(res => {
+    //    console.log("ddd", res.data);
+       if(res.data.success===true){
+        alert(res.data.message);
+        getAllCity();
+       }
+        setHide(false);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+
+
+
+      };
+
+
+
+    useEffect(() => {
+        getAllCity();
+        getAllState();
+      }, []);
+
+
     return (
         <div>
 

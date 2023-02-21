@@ -12,6 +12,8 @@ import ClientGroup from './component/Display/ClientGroup';
 import Clients from './component/Display/Clients';
 import ItemTolerance from './component/Display/ItemTolerance';
 import CountryStateCity from './component/Display/CountryStateCity';
+import State from './component/Display/statelist';
+import City from './component/Display/citylist';
 //Dashboard imp ends//
 import Default from "./component/Dashboard/Default";
 import Signs from "./component/sign/sign";
@@ -69,6 +71,16 @@ function App() {
                 path="/admin/CountryStateCity"
                 exact={true}
                 element={<CountryStateCity />}/>
+                <Route
+                path="/admin/statelist"
+                exact={true}
+                element={<State />}/>
+                 <Route
+                path="/admin/citylist"
+                exact={true}
+                element={<City />}/>
+
+                
 
               <Route
                 path="/"

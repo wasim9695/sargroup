@@ -8,6 +8,7 @@ const  State = () => {
     const [getCountry, setGetCountry] = useState([]);
     const [state_name, setState_name] = useState("");
     const [country_id, setCountry_id] = useState("");
+    const [hideTabs, setHideTabs] = useState(true);
     
     const [status, setStatus] = useState("");
     const [XID, setXID] = useState("");
@@ -116,7 +117,9 @@ const  State = () => {
 
       };
 
-
+      const onOFF = async() =>{
+        setHideTabs(false);
+      }
 
     useEffect(() => {
         getAllCountry();
@@ -128,7 +131,7 @@ const  State = () => {
         <div>
 
             <div className="col-md-12">
-                <div className="row">
+                <div className="row" hidden={hideTabs}>
                     <div className="col-md-12 cd1">
                         <div className="card">
                         <div className="col-xl-6 col-lg-6 col-md-6 d-flex flex-column mx-auto">
@@ -184,11 +187,13 @@ value={status} className="form-control">
             <div className='row'><div className='col-12'></div></div>
             
 
-            <div className='row'>
+            <div className='row' hidden={!hideTabs}>
                 <div className="col-lg-12  mt-4">
                     <div className="card">
                         <div className="card-body">
                             <div className="card-header pb-0 pt-0 text-start">
+                            <button 
+                             onClick={onOFF}  className="btn bg-gradient-info w-10 mt-4 mb-0 float-right" >ADD</button>
                                 <h5 className="font-weight-bolder text-info text-gradient text-center display-7"
                                     style={
                                         {textAlign: "center"}

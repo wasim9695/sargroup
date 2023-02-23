@@ -9,6 +9,7 @@ const  CountryStateCity = () => {
     const [status, setStatus] = useState("");
     const [XID, setXID] = useState("");
     const [hide, setHide] = useState(true);
+    const [hideTabs, setHideTabs] = useState(true);
     const [page, setPage] = useState(1);
 
     const itemsPerPage = 5;
@@ -46,6 +47,7 @@ const  CountryStateCity = () => {
         if(res.data.status===1){
             alert("Save Successfully");
             getAllCountry();
+            setHideTabs(true);
         }
           })
           .catch(err => {
@@ -86,6 +88,7 @@ const  CountryStateCity = () => {
         alert(res.data.message);
        }
         setHide(false);
+        setHideTabs(true);
           })
           .catch(err => {
             console.log(err);
@@ -94,6 +97,10 @@ const  CountryStateCity = () => {
 
 
       };
+      
+      const onOFF = async() =>{
+        setHideTabs(false);
+      }
 
 
 
@@ -105,7 +112,7 @@ const  CountryStateCity = () => {
     return (
         <div>
 
-            <div className="col-md-12">
+            <div hidden={hideTabs} className="col-md-12">
                 <div className="row">
                     <div className="col-md-12 cd1">
                         <div className="card">
@@ -148,20 +155,23 @@ value={status} className="form-control">
                     
                 </div>
             </div>
-            <div className='row'><div className='col-12'></div></div>
+            <div   className='row'><div className='col-12'></div></div>
             
 
-            <div className='row'>
+            <div className='row' hidden={!hideTabs}>
                 <div className="col-lg-12  mt-4">
                     <div className="card">
                         <div className="card-body">
                             <div className="card-header pb-0 pt-0 text-start">
+                            <button 
+                             onClick={onOFF}  className="btn bg-gradient-info w-10 mt-4 mb-0 float-right" >ADD</button>
                                 <h5 className="font-weight-bolder text-info text-gradient text-center display-7"
                                     style={
                                         {textAlign: "center"}
                                 }>
                                     List
                                 </h5>
+                                
                                 
                             </div>
                             <div className="table-responsive">

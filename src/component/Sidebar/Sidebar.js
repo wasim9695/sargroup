@@ -35,14 +35,9 @@ const Sidebar = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#Dashboard"
-                className="nav-link "
-                aria-controls="Dashboard"
-                role="button"
-                aria-expanded="false"
-              >
+            <Link className="nav-link " to="admin/dashboard">
+                     
+                   
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -61,22 +56,8 @@ const Sidebar = () => {
                 >
                   Dashboard
                 </span>
-              </a>
-              <div className="collapse " id="Dashboard">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/dashboard">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                        Dashboard
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+                </Link>
+         
             </li>
 
 
@@ -111,14 +92,7 @@ const Sidebar = () => {
               <div className="collapse " id="master">
                 <ul className="nav ms-2 ps-3">
                 <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#UserMAnagement"
-                className="nav-link "
-                aria-controls="UserMAnagement"
-                role="button"
-                aria-expanded="false"
-              >
+                <Link className="nav-link " to="admin/financial">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -137,35 +111,15 @@ const Sidebar = () => {
                 >
                  Financial Year
                 </span>
-              </a>
-              <div className="collapse " id="UserMAnagement">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/financial">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                        Financial Year
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+              </Link>
+          
             
               
             </li>
 
             <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#Country"
-                className="nav-link "
-                aria-controls="UserMAnagement"
-                role="button"
-                aria-expanded="false"
-              >
+            <Link className="nav-link " to="admin/CountryStateCity">
+                
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -184,22 +138,8 @@ const Sidebar = () => {
                 >
                 Country
                 </span>
-              </a>
-              <div className="collapse " id="Country">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/CountryStateCity">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                       Country List
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+             </Link>
+           
             
               
             </li>
@@ -207,14 +147,7 @@ const Sidebar = () => {
 
 
             <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#statelist"
-                className="nav-link "
-                aria-controls="UserMAnagement"
-                role="button"
-                aria-expanded="false"
-              >
+            <Link className="nav-link " to="admin/statelist">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -233,36 +166,15 @@ const Sidebar = () => {
                 >
                State
                 </span>
-              </a>
-              <div className="collapse " id="statelist">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/statelist">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                      State List
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+         </Link>
+           
             
               
             </li>
 
 
             <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#citylist"
-                className="nav-link "
-                aria-controls="UserMAnagement"
-                role="button"
-                aria-expanded="false"
-              >
+            <Link className="nav-link " to="admin/citylist">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -281,35 +193,14 @@ const Sidebar = () => {
                 >
                City
                 </span>
-              </a>
-              <div className="collapse " id="citylist">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/citylist">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                      City List
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+             </Link>
+             
             
               
             </li>
 
-            <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#Emplyee"
-                className="nav-link "
-                aria-controls="UserMAnagement"
-                role="button"
-                aria-expanded="false"
-              >
+            {/* <li className="nav-item">
+            <Link className="nav-link " to="admin/employeeList">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -328,35 +219,14 @@ const Sidebar = () => {
                 >
                Employee
                 </span>
-              </a>
-              <div className="collapse " id="Emplyee">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/employeeList">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                       Employee List
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+             </Link>
+             
             
               
-            </li>
+            </li> */}
 
             <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#Users"
-                className="nav-link "
-                aria-controls="Users"
-                role="button"
-                aria-expanded="false"
-              >
+            <Link className="nav-link " to="admin/company">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -375,22 +245,8 @@ const Sidebar = () => {
                 >
                  Company
                 </span>
-              </a>
-              <div className="collapse " id="Users">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/company">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                      Company  List
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+           </Link>
+            
             
               
             </li>
@@ -399,14 +255,7 @@ const Sidebar = () => {
 
 
             <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#UsersAll"
-                className="nav-link "
-                aria-controls="Users"
-                role="button"
-                aria-expanded="false"
-              >
+            <Link className="nav-link " to="admin/users">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -425,22 +274,8 @@ const Sidebar = () => {
                 >
                  User
                 </span>
-              </a>
-              <div className="collapse " id="UsersAll">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/users">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                      User  List
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+              </Link>
+              
             
               
             </li>
@@ -449,14 +284,7 @@ const Sidebar = () => {
 
 
             <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#clients"
-                className="nav-link "
-                aria-controls="clients"
-                role="button"
-                aria-expanded="false"
-              >
+            <Link className="nav-link " to="admin/clientsgroup">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -475,35 +303,14 @@ const Sidebar = () => {
                 >
                  Clients Group
                 </span>
-              </a>
-              <div className="collapse " id="clients">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/clientsgroup">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                      Clients Group  List
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+              </Link>
+              
             
               
             </li>
 
             <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#Clientss"
-                className="nav-link "
-                aria-controls="Clientss"
-                role="button"
-                aria-expanded="false"
-              >
+            <Link className="nav-link " to="admin/clients">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -522,22 +329,8 @@ const Sidebar = () => {
                 >
                  Clients
                 </span>
-              </a>
-              <div className="collapse " id="Clientss">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/clients">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                      Clients   List
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+              </Link>
+            
             
               
             </li>
@@ -550,14 +343,7 @@ const Sidebar = () => {
             
 
             <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#clientBoutique"
-                className="nav-link "
-                aria-controls="Company"
-                role="button"
-                aria-expanded="false"
-              >
+            <Link className="nav-link " to="admin/clientBoutique">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -576,36 +362,15 @@ const Sidebar = () => {
                 >
                  ClientBoutique 
                 </span>
-              </a>
-              <div className="collapse " id="clientBoutique">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/clientBoutique">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                      ClientBoutique  Detail
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+              </Link>
+              
             
               
             </li>
 
 
-            <li className="nav-item">
-              <a
-                data-bs-toggle="collapse"
-                href="#ItemTolerance"
-                className="nav-link "
-                aria-controls="Company"
-                role="button"
-                aria-expanded="false"
-              >
+            {/* <li className="nav-item">
+            <Link className="nav-link " to="admin/ItemTolerance">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
                   style={{
@@ -624,25 +389,11 @@ const Sidebar = () => {
                 >
                  ItemTolerance 
                 </span>
-              </a>
-              <div className="collapse " id="ItemTolerance">
-                <ul className="nav ms-2 ps-3">
-                  <li className="nav-item ">
-                    <Link className="nav-link " to="admin/ItemTolerance">
-                      <span
-                        className="sidenav-normal"
-                        style={{ color: "#67748e" }}
-                      >
-                      ItemTolerance  Detail
-                      </span>
-                    </Link>
-                  </li>
-                  
-                </ul>
-              </div>
+            </Link>
+            
             
               
-            </li>
+            </li> */}
                   
                 </ul>
               </div>

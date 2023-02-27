@@ -289,6 +289,191 @@ export const getCompanyList = async (datas) => {
 
 // end here
 
+
+
+
+
+//   Client here
+
+export const saveCLient = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/client/create`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+//   export const updateClient = async (datas) => {
+// 	try {
+// 	// console.log("hello", heraderAll);
+// 	const response = await http.post(`/company/update`, datas, { headers: authHeader() });
+// 	const responseJson = await response.data;
+// 	// console.log("cartD", responseJson);
+// 	return responseJson;
+// 	} catch (err) {
+//     console.log(err);
+//     return null;
+//   }
+//   };
+
+
+export const getClientList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.get(`/client_group/get`, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  
+//   export const getShowCompanyList = async (datas) => {
+// 	try {
+// 	// console.log("hello", heraderAll);
+// 	const response = await http.post(`/company/detail`, datas, { headers: authHeader() });
+// 	const responseJson = await response.data;
+// 	// console.log("cartD", responseJson);
+// 	return responseJson;
+// 	} catch (err) {
+//     console.log(err);
+//     return null;
+//   }
+//   };
+
+// end here
+
+
+
+//   Client Group here
+
+export const saveCLientGroup = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/client_group/create`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  export const updateClientGroup = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/client_group/update`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+export const getClientGroupList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/client_group/list`,datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  
+  export const getShowClientGroupList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/client_group/detail`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+// end here
+
+
+//   state here
+
+export const saveFinance = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/financial_year/create`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  export const updateFinance = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/financial_year/update`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+export const getFinanceList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/financial_year/list`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+  export const getShowFinanceList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/financial_year/detail`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+// end here
+
 // static getAllAgentList() {
 // 	return http.get("agent/", { headers: AppService.authHeader() });
 // };

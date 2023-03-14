@@ -6,7 +6,7 @@ function Default() {
             <div className="col-md-12">
                 <div class="row">
                     <div class="col-md-4 cd1">
-                        <div class="card">
+                        <div class="card bg-c-blue p-5">
                             <div class="card-body text-center">
 
                                 <h6 class="start mb-0 font-weight-bolder">Total Users</h6>
@@ -16,7 +16,7 @@ function Default() {
                         </div>
                     </div>
                     <div class="col-md-4 cd1">
-                        <div class="card">
+                        <div class="card bg-c-green  p-5">
                             <div class="card-body text-center">
 
                                 <h6 class="start mb-0 font-weight-bolder">Total Users</h6>
@@ -26,7 +26,7 @@ function Default() {
                         </div>
                     </div>
                     <div class="col-md-4 cd1">
-                        <div class="card">
+                        <div class="card bg-c-yellow  p-5">
                             <div class="card-body text-center">
 
                                 <h6 class="start mb-0 font-weight-bolder">Total Users</h6>

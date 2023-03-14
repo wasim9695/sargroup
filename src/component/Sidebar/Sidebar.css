@@ -5,3 +5,28 @@
     width: "35px";
     color: "rgb(103, 116, 142)";
 }
+
+.navbar-vertical.navbar-expand-xs.fixed-start{
+    background-color: #004381 !important;
+    margin-left: 0 !important;
+    border-radius: 0px;
+}
+.navbar-vertical.navbar-expand-xs .navbar-nav > .nav-item{
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+.navbar-vertical.navbar-expand-xs .navbar-nav .nav-link{
+
+    color: #ffffff;
+    
+}
+.g-sidenav-show .sidenav .nav-link-text{
+    color: #ffffff !important;
+}
+.navbar-vertical .navbar-nav .nav-link[data-bs-toggle="collapse"]:after{
+    color: #ffffff !important;
+}
+.navbar-vertical.navbar-expand-xs .navbar-nav .nav-item{
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}

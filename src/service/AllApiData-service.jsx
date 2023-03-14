@@ -474,6 +474,94 @@ export const getFinanceList = async (datas) => {
 
 // end here
 
+
+
+//   state here
+
+export const saveBoutique = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/boutique/create`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  export const updateBoutique = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/boutique/update`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+export const getBoutiqueList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/boutique/list`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+  export const getShowBoutiqueList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/boutique/detail`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  export const AddKagirags = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/karigar/create`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+
+  export const getKarigarList = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/karigar/list`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+// end here
+
 // static getAllAgentList() {
 // 	return http.get("agent/", { headers: AppService.authHeader() });
 // };

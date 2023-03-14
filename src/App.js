@@ -18,6 +18,7 @@ import City from './component/Display/citylist';
 import Default from "./component/Dashboard/Default";
 import Signs from "./component/sign/sign";
 import ClientBoutiqueDetail from './component/Display/ClientBoutiqueDetail';
+import KarigarList from './component/Display/KarigarList';
 import './App.css';
 
 function App() {
@@ -79,7 +80,16 @@ function App() {
                 path="/admin/citylist"
                 exact={true}
                 element={<City />}/>
-
+                 {/* <Route
+                path="/admin/karigarlist"
+                exact={true}
+                element={<karigarList />}/> */}
+                
+                <Route
+                path="/admin/karigarlist"
+                exact={true}
+                element={<KarigarList />}
+              />
                 
 
               <Route

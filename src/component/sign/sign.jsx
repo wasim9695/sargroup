@@ -35,7 +35,7 @@ const Signs = () => {
 
     return (
         <div>
-            <div className="container">
+            <div className="container singinMain">
                 
             <div className="row">
 <div className="col-xl-6 col-lg-6 col-md-6 d-flex flex-column mx-auto">

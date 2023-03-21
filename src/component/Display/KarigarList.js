@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate, Link  } from "react-router-dom";
 import { getCountryList, getStateList, getCityList, AddKagirags, getKarigarList } from "../../service/AllApiData-service";
    
     const  KarigarList = () => {
+      const navigate = useNavigate();
       const [getcountry, setGetCountry] = useState([]);
       const [getState, setGetState] = useState([]);
       const [getCity, setGetCity] = useState([]);
@@ -41,6 +43,7 @@ import { getCountryList, getStateList, getCityList, AddKagirags, getKarigarList 
     const [hide, setHide] = useState(true);
     const [page, setPage] = useState(1);
     const [hideTabs, setHideTabs] = useState(true);
+    const [hideAddButton, setHideAddButton] = useState(true);
 
     const itemsPerPage = 5;
     const handlePrevClick = () => {
@@ -105,7 +108,10 @@ getKarigarLists(event.target.value);
       const getKarigarLists = async (datas) => {
         const data = { search:datas };
          await getKarigarList(data).then(res => {
-        console.log("ddd", res.data);
+        console.log("ddd", res.data.data.length);
+        if(res.data.data.length===0){
+          setHideAddButton(false);
+        }
         setKarigar(res.data.data);
           })
           .catch(err => {
@@ -178,6 +184,12 @@ getKarigarLists(event.target.value);
 
 
       };
+
+      const dataSend = async(ID) =>{
+        // console.log(ID);
+        localStorage.setItem("Code", ID);
+        navigate("/admin/karigarSearch")
+      }
 
 
 
@@ -468,7 +480,7 @@ className="form-control" />
                   <h4>karigar List</h4>
                   <div class="ms-auto my-auto mt-lg-0 mt-4">
                     <div class="ms-auto my-auto">
-                      <button onClick={onOFF}
+                      <button onClick={onOFF} hidden={hideAddButton}
                         type="button"
                         class=" btn btn btn bg-info btn-sm mb-0"
                         data-bs-toggle="modal"
@@ -555,61 +567,43 @@ className="form-control" />
                   >
                     <thead class="thead-light">
                       <tr>
-                        <th style={{position: 'relative',
-    top: '-20px'}} rowSpan={2}>Codes (9 digited)</th>
-                        <th style={{position: 'relative',
-    top: '-20px'}} rowSpan={2}>Company</th>
-                        <th style={{position: 'relative',
-    top: '-20px'}} rowSpan={2}>Loss %</th>
-                        <th style={{position: 'relative',
-    top: '-20px'}} rowSpan={2}>Making Charges per gram</th>
-                        <th  colSpan={3}>Stones</th>
-                        <th colSpan={3}>Kundan</th>
-                        <th colSpan={3}>Enamal</th>
-                        <th colSpan={3}>Moti</th>
-                        <th style={{position: 'relative',
-    top: '-20px'}} rowSpan={2}>Additional Charge</th>
-                        <th style={{position: 'relative',
-    top: '-20px'}} rowSpan={2}>Total Additional Charges</th>
-    <th style={{position: 'relative',
-    top: '-20px'}} rowSpan={2}>Action</th>
+                        <th  >Codes (9 digited)</th>
+    <th  >Name</th>
+                        <th  >Mobile Number</th>
+                        <th  >Trade License Number</th>
+                        <th  >Gold License No</th>
+                       
+                        <th  >Pan</th>
+                        <th  >Aadhaar No</th>
+    <th  >Address Line1</th>
+    <th  >Address Line2</th>
+    <th  >Street</th>
+    <th  >Pincode</th>
+     <th  >City</th>
+     <th  >State</th>
+     <th  >Country</th>
+    <th  >Action</th>
                       </tr>
-                      <tr>
-                        <th>Weight</th>
-                        <th>Rate</th>
-                        <th>Value</th>
-                        <th>Pcs</th>
-                        <th>Rate</th>
-                        <th>Value</th>
-                        <th>Weight</th>
-                        <th>Rate</th>
-                        <th>Value</th>
-                        <th>Weight</th>
-                        <th>Rate</th>
-                        <th>Value</th>
-                      </tr>
+                      
                     </thead>
                     <tbody>
                     {displayedItems.map((item, index)=>(
                       <tr>
-                        <td class="text-sm">{item.code}</td>
+                        <td class="text-sm">     <Link className="AnchorClass" onClick={() => dataSend(item.id)} to="javascript:void('')">{item.code}</Link></td>
                         <td class="text-sm">{item.name}</td>
-                        <td class="text-sm">{item.name}</td>
-                        <td class="text-sm">Joined Members</td>
-                        <td class="text-sm">Status</td>
-                        <td class="text-sm">Earnings</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
-                        <td class="text-sm">Team</td>
+                        <td class="text-sm">{item.mobile_number}</td>
+                        <td class="text-sm">{item.trade_license_number}</td>
+                        <td class="text-sm">{item.gold_license_no}</td>
+                        <td class="text-sm">{item.pan}</td>
+                        <td class="text-sm">{item.aadhaar_no}</td>
+                        <td class="text-sm">{item.address_line1}</td>
+                        <td class="text-sm">{item.address_line2}</td>
+                        <td class="text-sm">{item.street}</td>
+                        <td class="text-sm">{item.pincode}</td>
+                        <td class="text-sm">{item.city.data.city_name}</td>
+                        <td class="text-sm">{item.state.data.state_name}</td>
+                        <td class="text-sm">{item.country.data.country_name}</td>
+                        
                         <td>
                                                 <button class="btn btn-link text-secondary mb-0 dropdown-toggle" id="dropdownMenuButton"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fa fa-ellipsis-v text-xs"></i>

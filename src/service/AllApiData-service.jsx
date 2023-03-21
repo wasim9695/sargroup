@@ -560,6 +560,33 @@ export const getBoutiqueList = async (datas) => {
   }
   };
 
+  export const allLogOut = async () => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.get(`/logout`, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+  export const getKarigarSearch = async (datas) => {
+	try {
+	// console.log("hello", heraderAll);
+	const response = await http.post(`/karigar/getDesign`, datas, { headers: authHeader() });
+	const responseJson = await response.data;
+	// console.log("cartD", responseJson);
+	return responseJson;
+	} catch (err) {
+    console.log(err);
+    return null;
+  }
+  };
+
+  
 // end here
 
 // static getAllAgentList() {

@@ -1,11 +1,20 @@
 import React from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Header.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate  } from "react-router-dom";
+import { allLogOut } from "../../service/AllApiData-service";
 
 const Header = () => {
   const location = useLocation();
-  console.log(location.pathname);
+  const navigate = useNavigate();
+const logoutAll = async () =>{
+  await allLogOut().then(res => {
+    navigate('/');
+      })
+      .catch(err => {
+        console.log(err);
+      })
+}
   return (
     <div>
       {location.pathname.includes("/admin/") ?  (
@@ -36,7 +45,7 @@ const Header = () => {
           <ul className="navbar-nav  justify-content-end">
             <li className="nav-item d-flex align-items-center">
               <a
-                href="/admin/Default"
+                href="javascript:void('0')" onClick={logoutAll}
                 className="nav-link text-body font-weight-bold px-0"
               >
                 <i className="fa fa-user me-sm-1"></i>

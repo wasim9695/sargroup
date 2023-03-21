@@ -19,6 +19,7 @@ import Default from "./component/Dashboard/Default";
 import Signs from "./component/sign/sign";
 import ClientBoutiqueDetail from './component/Display/ClientBoutiqueDetail';
 import KarigarList from './component/Display/KarigarList';
+import KarigarSearchData from './component/Display/karigarSearchData';
 import './App.css';
 
 function App() {
@@ -90,6 +91,13 @@ function App() {
                 exact={true}
                 element={<KarigarList />}
               />
+
+<Route
+                path="/admin/karigarSearch"
+                exact={true}
+                element={<KarigarSearchData />}
+              />
+                
                 
 
               <Route

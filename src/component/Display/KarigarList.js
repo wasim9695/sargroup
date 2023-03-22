@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, Link  } from "react-router-dom";
+import Pagination from "react-custom-pagination";
 import { getCountryList, getStateList, getCityList, AddKagirags, getKarigarList } from "../../service/AllApiData-service";
    
     const  KarigarList = () => {
@@ -44,6 +45,18 @@ import { getCountryList, getStateList, getCityList, AddKagirags, getKarigarList 
     const [page, setPage] = useState(1);
     const [hideTabs, setHideTabs] = useState(true);
     const [hideAddButton, setHideAddButton] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage] = useState(10);
+
+    const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = Karigar.slice(indexOfFirstPost, indexOfLastPost);
+
+  // when user clicks on number this function will execute
+
+  const paginate = (number) => {
+    setCurrentPage(number);
+  };
 
     const itemsPerPage = 5;
     const handlePrevClick = () => {
@@ -51,9 +64,7 @@ import { getCountryList, getStateList, getCityList, AddKagirags, getKarigarList 
      
    }
  
-   const handleNextClick = async () => {
-     setPage(page + 1);
-   }
+  
 
    
 
@@ -243,7 +254,7 @@ getKarigarLists(event.target.value);
             <div className="col-md-12">
                 <div className="row" hidden={hideTabs}>
                     <div className="col-md-12 cd1">
-                    <h3 className="font-weight-bolder text-info text-gradient text-center display-7">Krigar Entry</h3>
+                    <h3 className="font-weight-bolder text-info text-gradient text-center display-7">Karigar Entry</h3>
                     <div className="row">
                         <div className="col-xl-6 col-lg-6 col-md-6  ">
 <div className="card">
@@ -271,12 +282,12 @@ getKarigarLists(event.target.value);
  name="design_code"  className="form-control"/>
 </div>
 
-<label>mobile:</label>
+<label>Mobile:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="mobile" 
  className="form-control" />
 </div>
-<label>trade_license_number:</label>
+<label>Trade License Number:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="trade_license_number" 
  className="form-control" />
@@ -287,7 +298,7 @@ getKarigarLists(event.target.value);
  className="form-control"/>
 </div>
 
-<label>pan:</label>
+<label>Pan:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="pan" 
  className="form-control"/>
@@ -335,7 +346,7 @@ getKarigarLists(event.target.value);
 <input type="text" onChange={handleChange} name="pincode" 
  className="form-control" />
 </div>
-<label>Loss percent:</label>
+<label>Loss Percent:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="loss_percent" 
  className="form-control" />
@@ -368,7 +379,7 @@ getKarigarLists(event.target.value);
 
 </div>
 <div className="card-body pt-0">
-<form role="form" className="text-start">
+<form role="form" className="text-start" style={{lineHeight:'28.5px'}}>
 <label>Stone Rate:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="stone_rate" 
@@ -394,12 +405,12 @@ getKarigarLists(event.target.value);
 <input type="text" onChange={handleChange} name="kundan_value" 
  className="form-control" />
 </div>
-<label>enamel weight:</label>
+<label>Enamel weight:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="enamel_weight" 
 className="form-control" />
 </div>
-<label>enamel rate:</label>
+<label>Enamel rate:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="enamel_rate" 
  className="form-control" />
@@ -409,27 +420,27 @@ className="form-control" />
 <input type="text" onChange={handleChange} name="enamel_value" 
  className="form-control" />
 </div>
+{/* <label>Moti weight:</label>
+<div className="mb-3">
+<input type="text" onChange={handleChange} name="moti_weight" 
+ className="form-control" />
+</div> */}
 <label>Moti weight:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="moti_weight" 
  className="form-control" />
 </div>
-<label>Moti weight:</label>
+<label>Moti Rate:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="moti_weight" 
  className="form-control" />
 </div>
-<label>Moti_rate:</label>
-<div className="mb-3">
-<input type="text" onChange={handleChange} name="moti_weight" 
- className="form-control" />
-</div>
-<label>moti_value:</label>
+<label>moti Value:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="moti_value" 
  className="form-control" />
 </div>
-<label>Additional_charge:</label>
+<label>Additional Charge:</label>
 <div className="mb-3">
 <input type="text" onChange={handleChange} name="additional_charge" 
  className="form-control" />
@@ -487,7 +498,7 @@ className="form-control" />
                         data-bs-target="#import"
                         style={{ color: "white" }}
                       >
-                       Add Krigar
+                       Add karigar
                       </button>
                       {/* <button
                         class="btn btn bg-info btn-sm export mb-0 mt-sm-0 mt-1"
@@ -524,23 +535,23 @@ className="form-control" />
               <div className="row" style={{ justifyContent: "center" }}>
                 
                 <div className="col-md-3 cde">
-                  <input
+                  {/* <input
                     class=" date form-control"
                     type="date"
                     value="2018-11-23"
                     id="example-date-input"
-                  ></input>
+                  ></input> */}
                 </div>
                 <div className="col-md-3 cdr12">
-                  <input
+                  {/* <input
                     class=" date form-control"
                     type="date"
                     value="2018-11-23"
                     id="example-date-input"
-                  ></input>
+                  ></input> */}
                 </div>
                 <div className="col-md-2 cdr1">
-                  <button
+                  {/* <button
                     class=" bt btn bg-info btn-sm export mb-0 mt-sm-0 mt-1"
                     data-type="csv"
                     type="button"
@@ -548,7 +559,7 @@ className="form-control" />
                     style={{ color: "white" }}
                   >
                     Submit
-                  </button>
+                  </button> */}
                 </div>
                 <div className="col-md-2 cdr11">
                   <input onChange={searchhandle}
@@ -567,7 +578,7 @@ className="form-control" />
                   >
                     <thead class="thead-light">
                       <tr>
-                        <th  >Codes (9 digited)</th>
+                        <th  >Codes (9 digit)</th>
     <th  >Name</th>
                         <th  >Mobile Number</th>
                         <th  >Trade License Number</th>
@@ -587,7 +598,7 @@ className="form-control" />
                       
                     </thead>
                     <tbody>
-                    {displayedItems.map((item, index)=>(
+                    {currentPosts.map((item, index)=>(
                       <tr>
                         <td class="text-sm">     <Link className="AnchorClass" onClick={() => dataSend(item.id)} to="javascript:void('')">{item.code}</Link></td>
                         <td class="text-sm">{item.name}</td>
@@ -621,44 +632,19 @@ className="form-control" />
                     </tbody>
                   </table>
                 </div>
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination" style={{ justifyContent: "end" }}>
-                    <li class="page-item">
-                      <a
-                        class="page-link"
-                        href="javascript:;"
-                        aria-label="Previous"
-                      >
-                        <i class="fa fa-angle-left"></i>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:;">
-                        1
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:;">
-                        2
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="javascript:;">
-                        3
-                      </a>
-                    </li>
-                    <li class="page-item">
-                      <a
-                        class="page-link"
-                        href="javascript:;"
-                        aria-label="Next"
-                      >
-                        <i class="fa fa-angle-right"></i>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </li>
-                  </ul>
+                <nav className="navPag" aria-label="Page navigation example">
+                <Pagination
+          totalPosts={Karigar.length}
+          postsPerPage={postsPerPage}
+          paginate={paginate}
+          view={10}
+          showLast={true}
+          showFirst={true}
+          showIndex={true}
+          showFirstText={"First Page"}
+          showLastText = {"Last Page"}
+          bgColor={"skyblue"}
+        />
                 </nav>
               </div>
             </div>

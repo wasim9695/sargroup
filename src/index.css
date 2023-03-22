@@ -52,3 +52,23 @@ code {
  display: block;
   color: #ffffff;
 }
+nav.navPag {
+  padding-top: 10px;
+  width: 250px;
+  float: right;
+  padding-bottom: 20px;
+}
+  a.page-link {
+    background: #17c1e8;
+    color: #ffffff !important;
+}
+.table{
+  border-color: #84919d;
+}
+.card .card-header {
+  padding: 1.5rem;
+  background: #17c1e8;}
+
+  .card .card-header h4{
+    color: #ffffff;
+  }

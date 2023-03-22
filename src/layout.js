@@ -13,7 +13,7 @@ console.log(location.pathname);
       <><Sidebar /><main className="main-content mt-1 border-radius-lg ">
             <Header />
 
-            <div className="container-fluid py-5 ">
+            <div className="container-fluid py-2 ">
               {children}
               <footer className="footer pt-5  ">
                 <div className="container-fluid">

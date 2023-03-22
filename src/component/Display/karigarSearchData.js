@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import { getKarigarSearch } from "../../service/AllApiData-service";
+import { useNavigate, Link  } from "react-router-dom";
+import { getKarigarSearch, getKarigarOnly } from "../../service/AllApiData-service";
    
     const  KarigarSearchData = () => {
       const [Karigar, setKarigar] = useState([]);
+      const [KarigarOnly, setKarigarOnly] = useState([]);
       const IDS =     localStorage.getItem("Code");
     const [XID, setXID] = useState("");
     const [hide, setHide] = useState(true);
@@ -32,6 +34,28 @@ getKarigarLists(event.target.value);
 
 
       const getKarigarLists = async () => {
+        const ds = localStorage.getItem("Code");
+        const data = { id:ds };
+        console.log(data);
+         await getKarigarOnly(data).then(res => {
+        console.log("ddd2", res.data);
+        if(res.data){
+          setHideAddButton(false);
+        }
+        setKarigarOnly([res.data]);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+
+
+
+      };
+
+
+
+
+      const getKarigarOnlys = async () => {
         const ds = localStorage.getItem("Code");
         const data = { id:ds };
         console.log(data);
@@ -128,6 +152,7 @@ getKarigarLists(event.target.value);
         console.log(localStorage.getItem("Code"));
     
         getKarigarLists();
+        getKarigarOnlys();
       }, []);
       const onOFF = async() =>{
         setHideTabs(false);
@@ -146,7 +171,151 @@ getKarigarLists(event.target.value);
              
             </div>
 
-        <div class="row">
+
+            <div class="row">
+          <div class="col-12">
+            <div class="card cdw">
+              <div class="card-header pb-0">
+                <div class="d-lg-flex">
+                  <h4>Karigar  List</h4>
+                  <div class="ms-auto my-auto mt-lg-0 mt-4">
+                    <div class="ms-auto my-auto">
+                      
+                      {/* <button
+                        class="btn btn bg-info btn-sm export mb-0 mt-sm-0 mt-1"
+                        data-type="csv"
+                        type="button"
+                        name="button"
+                        style={{ color: "white" }}
+                      >
+                        PDF
+                      </button>
+                      <button
+                        class="btn btn bg-info btn-sm export mb-0 mt-sm-0 mt-1"
+                        data-type="csv"
+                        type="button"
+                        name="button"
+                        style={{ color: "white" }}
+                      >
+                        CSV
+                      </button>
+                      <button
+                        class="btn btn bg-info btn-sm export mb-0 mt-sm-0 mt-1"
+                        data-type="csv"
+                        type="button"
+                        name="button"
+                        style={{ color: "white" }}
+                      >
+                        MS Excel
+                      </button> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+              {/* <div className="row" style={{ justifyContent: "center" }}>
+                
+                <div className="col-md-3 cde">
+                  <input
+                    class=" date form-control"
+                    type="date"
+                    value="2018-11-23"
+                    id="example-date-input"
+                  ></input>
+                </div>
+                <div className="col-md-3 cdr12">
+                  <input
+                    class=" date form-control"
+                    type="date"
+                    value="2018-11-23"
+                    id="example-date-input"
+                  ></input>
+                </div>
+                <div className="col-md-2 cdr1">
+                  <button
+                    class=" bt btn bg-info btn-sm export mb-0 mt-sm-0 mt-1"
+                    data-type="csv"
+                    type="button"
+                    name="button"
+                    style={{ color: "white" }}
+                  >
+                    Submit
+                  </button>
+                </div>
+                <div className="col-md-2 cdr11">
+                  <input onChange={searchhandle}
+                    class=" for form-control"
+                    type="search"
+                    placeholder="Search....."
+                  />
+                </div>
+              </div> */}
+
+
+<div class="card-body px-0 pb-0">
+                <div class=" container table-responsive newKarigars">
+                  <table
+                    class=" table table-bordered table table-flush"
+                    id="products-list"
+                  >
+                    <thead class="thead-light">
+                      <tr>
+                        <th  >Codes (9 digited)</th>
+    <th  >Name</th>
+                        <th  >Mobile Number</th>
+                        <th  >Trade License Number</th>
+                        <th  >Gold License No</th>
+                       
+                        <th  >Pan</th>
+                        <th  >Aadhaar No</th>
+    <th  >Address Line1</th>
+    <th  >Address Line2</th>
+    <th  >Street</th>
+    <th  >Pincode</th>
+     <th  >City</th>
+     <th  >State</th>
+     <th  >Country</th>
+   
+                      </tr>
+                      
+                    </thead>
+                    <tbody>
+                    {KarigarOnly.map((item, index)=>(
+                      <tr>
+                        <td class="text-sm">  {item.code}</td>
+                        <td class="text-sm">{item.name}</td>
+                        <td class="text-sm">{item.mobile_number}</td>
+                        <td class="text-sm">{item.trade_license_number}</td>
+                        <td class="text-sm">{item.gold_license_no}</td>
+                        <td class="text-sm">{item.pan}</td>
+                        <td class="text-sm">{item.aadhaar_no}</td>
+                        <td class="text-sm">{item.address_line1}</td>
+                        <td class="text-sm">{item.address_line2}</td>
+                        <td class="text-sm">{item.street}</td>
+                        <td class="text-sm">{item.pincode}</td>
+                        <td class="text-sm">{item.city.data.city_name}</td>
+                        <td class="text-sm">{item.state.data.state_name}</td>
+                        <td class="text-sm">{item.country.data.country_name}</td>
+                        
+                       
+
+                      </tr>
+                    ))}
+                    </tbody>
+                  </table>
+                </div>
+                
+              </div>
+
+
+           
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="row" style={{marginTop:'40px'}}>
           <div class="col-12">
             <div class="card cdw">
               <div class="card-header pb-0">
@@ -225,6 +394,10 @@ getKarigarLists(event.target.value);
                 </div>
               </div> */}
 
+
+
+
+
               <div class="card-body px-0 pb-0">
                 <div class=" container table-responsive newKarigars">
                   <table
@@ -234,7 +407,7 @@ getKarigarLists(event.target.value);
                     <thead class="thead-light">
                       <tr>
                         <th style={{position: 'relative',
-    top: '-20px'}} rowSpan={2}>Codes (9 digited)</th>
+    top: '-20px'}} rowSpan={2}>Codes (9 digit)</th>
     <th style={{position: 'relative',
     top: '-20px'}} rowSpan={2}>Company</th>
     <th style={{position: 'relative',

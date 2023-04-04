@@ -12,11 +12,13 @@ code {
     monospace;
 }
 .card{
-  background-color: #d3d3d3bf !important;
+  /* background-color: #d3d3d3bf !important; */
 }
 
 .card .card-header h5 {
   padding-bottom: 20px;
+  text-transform: uppercase;
+  font-family: ui-monospace;
 }
 .table td {
   white-space: nowrap;
@@ -67,8 +69,41 @@ nav.navPag {
 }
 .card .card-header {
   padding: 1.5rem;
-  background: #17c1e8;}
+  background: #17c1e830;}
 
   .card .card-header h4{
-    color: #ffffff;
+    color: #21b4fd;
+    font-family: ui-monospace;
   }
+  .singinMain .text-gradient.text-info {
+    background-image: linear-gradient(310deg, #ffffff, #d5f5fc);
+    font-family: ui-monospace;
+    /* color: #ffffff !important; */
+}
+.text-gradient.text-info {
+  background-image: linear-gradient(310deg, #040a20, #21D4FD);
+  font-family: ui-monospace;
+}
+.card .card-header {
+  padding: 1.5rem;
+  padding-bottom: 14px !important;
+  /* color: #ffffff !important; */
+}
+.flex-column {
+  flex-direction: column !important;
+  padding-top: 10px;
+  /* bottom: 10px !important; */
+  padding-bottom: 10px;
+}
+nav.navPag div:nth-child(2) {
+  background: #17c1e8 !IMPORTANT;
+}
+nav.navPag div:nth-child(1) {
+  background: #17c1e8 !IMPORTANT;
+  margin-right: 10px;
+}
+
+.page-link:focus {
+  z-index: 3;
+  color: #830866;
+  background-color: #1876d4;}

@@ -185,6 +185,10 @@ setHide(false);
 <div className="card-header pb-0 text-start">
 
 
+
+</div>
+<div className="card-body pt-0">
+<form role="form" className="text-start" style={{"line-height": "33px"}}>
 <label>Client:</label>
 <div className="mb-3">
 <select onChange={e => setClient_id(e.target.value)} name="client_id" 
@@ -195,9 +199,6 @@ value={client_id} className='form-control'>
         ))}
 </select>
 </div>
-</div>
-<div className="card-body pt-0">
-<form role="form" className="text-start" style={{"line-height": "33px"}}>
 <label>Boutique Code:</label>
 <div className="mb-3">
 <input type="text" onChange={e => setBoutique_code(e.target.value)} name="boutique_code" 

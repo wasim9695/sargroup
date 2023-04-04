@@ -254,7 +254,7 @@ const Sidebar = () => {
 
 
 
-            <li className="nav-item">
+            {/* <li className="nav-item">
             <Link className="nav-link " to="admin/users">
                 <div
                   class="icon ico icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2"
@@ -278,7 +278,7 @@ const Sidebar = () => {
               
             
               
-            </li>
+            </li> */}
 
 
 
